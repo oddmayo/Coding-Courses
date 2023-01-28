@@ -64,4 +64,22 @@ ORDER BY total_amt_usd DESC, account_id;
 
 -- this second query is not that informative since the exact amounts make it difficult to see the grouping
 
+-- WHERE clause to filter data
 
+SELECT *
+FROM orders
+WHERE account_id = 4251
+ORDER BY occurred_at
+LIMIT 1000;
+
+-- practice
+
+SELECT *
+FROM orders
+WHERE gloss_amt_usd >= 1000
+LIMIT 5;
+
+SELECT *
+FROM orders
+WHERE total_amt_usd < 500
+LIMIT 10;
