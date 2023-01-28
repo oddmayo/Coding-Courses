@@ -45,5 +45,23 @@ FROM orders
 ORDER BY total_amt_usd
 LIMIT 20;
 
+-- order by multiple columns
+
+SELECT  account_id,
+        total_amt_usd
+FROM orders
+ORDER By total_amt_usd DESC, account_id
+
+-- practice
+
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY account_id, total_amt_usd DESC;
+
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY total_amt_usd DESC, account_id;
+
+-- this second query is not that informative since the exact amounts make it difficult to see the grouping
 
 
