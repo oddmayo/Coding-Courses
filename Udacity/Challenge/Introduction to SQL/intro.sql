@@ -83,3 +83,15 @@ SELECT *
 FROM orders
 WHERE total_amt_usd < 500
 LIMIT 10;
+
+-- WHERE clause with non-numeric data
+
+SELECT *
+FROM accounts
+WHERE name =! 'United Technologies'
+
+-- practice
+
+SELECT name, website, primary_poc
+FROM accounts
+WHERE name = 'Exxon Mobil';
