@@ -14,14 +14,17 @@ AND occurred_at = '2016-10-01'
 SELECT id, account_id, occurred_at
 FROM orders;
 
+-------------------------------------------------------------
 -- use of LIMIT: always at the end of the query
+-------------------------------------------------------------
 
 SELECT *
 FROM web_events
 LIMIT 100000;
 
-
+-------------------------------------------------------------
 -- use ORDDER BY
+-------------------------------------------------------------
 
 SELECT *
 FROM orders
@@ -45,7 +48,9 @@ FROM orders
 ORDER BY total_amt_usd
 LIMIT 20;
 
+-------------------------------------------------------------
 -- order by multiple columns
+-------------------------------------------------------------
 
 SELECT  account_id,
         total_amt_usd
@@ -64,7 +69,9 @@ ORDER BY total_amt_usd DESC, account_id;
 
 -- this second query is not that informative since the exact amounts make it difficult to see the grouping
 
+-------------------------------------------------------------
 -- WHERE clause to filter data
+-------------------------------------------------------------
 
 SELECT *
 FROM orders
@@ -84,7 +91,9 @@ FROM orders
 WHERE total_amt_usd < 500
 LIMIT 10;
 
+-------------------------------------------------------------
 -- WHERE clause with non-numeric data
+-------------------------------------------------------------
 
 SELECT *
 FROM accounts
@@ -95,3 +104,33 @@ WHERE name =! 'United Technologies'
 SELECT name, website, primary_poc
 FROM accounts
 WHERE name = 'Exxon Mobil';
+
+-------------------------------------------------------------
+-- Arithmetic operators
+-------------------------------------------------------------
+
+SELECT account_id,
+       occurred_at,
+       standard_qty,
+       gloss_qty + poster_qty AS nonstandrd_qty
+FROM orders
+LIMIT 10;
+
+-- practice
+
+SELECT id,
+	   account_id,
+       standard_amt_usd / standard_qty
+FROM orders
+LIMIT 10;
+
+SELECT id,
+	   account_id,
+       standard_amt_usd / standard_qty
+FROM orders
+LIMIT 10;
+
+SELECT id, account_id, 
+poster_amt_usd/(standard_amt_usd + gloss_amt_usd + poster_amt_usd) AS post_per
+FROM orders
+LIMIT 10;
